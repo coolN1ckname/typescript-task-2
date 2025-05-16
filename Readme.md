@@ -18,7 +18,7 @@
     - Вывод QR-кода в терминал. Пример отображения:
         ```bash
         $ npm run build
-        $ npm start -- generate "I love TypeScript!" --size 8
+        $ npm start -- generate "I love TypeScript!" -- --size 8
         █████████████████████████████████
         ████ ▄▄▄▄▄ ██▀█ ▄█ ▄▄▄▄▄ ████
         ████ █   █ █▄▀█▄█▀ █   █ ████
