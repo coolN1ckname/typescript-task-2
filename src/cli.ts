@@ -6,7 +6,7 @@ const program = new Command();
 program
   .name('qr-cli')
   .description('Генератор QR-кодов для терминала')
-  .version('1.0.0');
+  .version('1.0.0')
 
 program
   .configureOutput({
@@ -19,12 +19,13 @@ program
   });
 
 program
-  .command('generate <text>')
+  .command('generate [text...]')
   .description('Создать QR-код из текста')
-  .option('--size <number>', 'Размер QR-кода', '8')
-  .action(async (text, options) => {
+  .option('-s, --size [number]', 'Размер QR-кода', '8')
+  .action(async (text: string[], options) => {
     try {
-      const qr = await generateQRCode(text, Number(options.size));
+      const inputText = text.join(' ');
+      const qr = await generateQRCode(inputText, Number(options.size));
       console.log(qr);
     } catch (error) {
       console.error("Ошибка генерации QR-кода:", error);
@@ -32,5 +33,3 @@ program
   });
 
 program.parse(process.argv);
-
-//вывод работает только с "-- --size". Если оставить только "--size", то выдаст ошибку нескольких аргументов

@@ -6,7 +6,7 @@ export async function generateQRCode(text: string, size: number): Promise<string
   }
 
   try {
-    return await QRCode.toString(text, { type: 'terminal', small: size === 8 });
+    return await QRCode.toString(text, { type: 'terminal', version: size, small: true });
   } catch (error) {
     throw new Error("Ошибка при генерации QR-кода");
   }
